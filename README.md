@@ -1,4 +1,4 @@
-# Top IMDb
+# [Top IMDb](https://top-imdb.herokuapp.com/)
 
 A web app displaying the top movies from [The Movie DB](https://www.themoviedb.org/)
 
