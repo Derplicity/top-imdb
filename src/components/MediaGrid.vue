@@ -16,7 +16,7 @@
 
 <script>
 // Components
-import MediaGridItem from './MediaGridItem';
+import MediaGridItem from './MediaGridItem'
 
 export default {
   name: 'MediaList',
@@ -35,7 +35,7 @@ export default {
       type: String,
     },
   },
-};
+}
 </script>
 
 <style scoped>

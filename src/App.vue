@@ -14,7 +14,7 @@
 
 <script>
 // Components
-import AppNavbar from './components/AppNavbar';
+import AppNavbar from './components/AppNavbar'
 
 export default {
   name: 'App',
@@ -23,7 +23,7 @@ export default {
   components: {
     AppNavbar,
   },
-};
+}
 </script>
 
 <style>

@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
 
 // Components
-import MoviesView from './MoviesView';
+import MoviesView from './MoviesView'
 
 export default {
   name: 'QueriedMovies',
@@ -34,8 +34,8 @@ export default {
   watch: {
     // Watch for query param change in path
     '$route.query.q': function handleQueryChange() {
-      const payload = { page: 1, append: false };
-      this.onLoadMovies(payload);
+      const payload = { page: 1, append: false }
+      this.onLoadMovies(payload)
     },
   },
 
@@ -49,13 +49,13 @@ export default {
      */
     onLoadMovies(payload) {
       // Get query from route
-      const { q } = this.$route.query;
+      const { q } = this.$route.query
 
       // Get movies by user query
-      this.getMoviesByQuery({ ...payload, query: q });
+      this.getMoviesByQuery({ ...payload, query: q })
     },
   },
-};
+}
 </script>
 
 <style scoped>

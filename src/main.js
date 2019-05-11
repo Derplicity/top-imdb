@@ -1,20 +1,20 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
 // Material components
-import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css';
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 // Store config
-import storeConfig from './store';
+import storeConfig from './store'
 
 // Router config
-import routerConfig from './router';
+import routerConfig from './router'
 
 // App
-import App from './App';
+import App from './App'
 
 // Load Vuetify
-Vue.use(Vuetify);
+Vue.use(Vuetify)
 
 // Create new Vue instance
 /* eslint-disable no-new */
@@ -23,4 +23,4 @@ new Vue({
   render: h => h(App),
   store: storeConfig,
   router: routerConfig,
-});
+})

@@ -20,7 +20,7 @@
 
 <script>
 // Helper methods
-import { ImageUrlSelector } from '../helpers';
+import { ImageUrlSelector } from '../helpers'
 
 export default {
   name: 'MediaGridItem',
@@ -48,7 +48,7 @@ export default {
           icon: 'trending_up',
           value: Math.round(this.media.popularity),
         },
-      ];
+      ]
     },
   },
 
@@ -59,10 +59,10 @@ export default {
      * @return {string} image url
      */
     getImageUrl(path) {
-      return ImageUrlSelector(path);
+      return ImageUrlSelector(path)
     },
   },
-};
+}
 </script>
 
 <style scoped>

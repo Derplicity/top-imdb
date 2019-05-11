@@ -18,7 +18,7 @@ export default {
    */
   created() {
     // Add scroll listener
-    this.scrollListener().add();
+    this.scrollListener().add()
   },
 
   /**
@@ -26,7 +26,7 @@ export default {
    */
   beforeDestroy() {
     // Remove scroll listener
-    this.scrollListener().remove();
+    this.scrollListener().remove()
   },
 
   methods: {
@@ -46,9 +46,8 @@ export default {
          * @desc Remove event listener
          * @callback {handleScroll} handle the scroll
          */
-        remove: () =>
-          window.removeEventListener('scroll', this.handleScroll, false),
-      };
+        remove: () => window.removeEventListener('scroll', this.handleScroll, false),
+      }
     },
 
     /**
@@ -61,11 +60,11 @@ export default {
         document.documentElement.offsetHeight
       ) {
         // Emit scroll-bottom event
-        this.$emit('scroll-bottom');
+        this.$emit('scroll-bottom')
       }
     },
   },
-};
+}
 </script>
 
 <style scoped>

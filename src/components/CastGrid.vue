@@ -17,7 +17,7 @@
 
 <script>
 // Components
-import CastGridItem from './CastGridItem';
+import CastGridItem from './CastGridItem'
 
 export default {
   name: 'CastGrid',
@@ -41,10 +41,10 @@ export default {
      */
     members() {
       // Return cast members - max 4
-      return this.castList.slice(0, 4);
+      return this.castList.slice(0, 4)
     },
   },
-};
+}
 </script>
 
 <style scoped>
