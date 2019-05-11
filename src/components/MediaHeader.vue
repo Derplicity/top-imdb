@@ -50,10 +50,10 @@
 </template>
 
 <script>
-import moment from 'moment';
+import moment from 'moment'
 
 // Helper methods
-import { ImageUrlSelector } from '../helpers';
+import { ImageUrlSelector } from '../helpers'
 
 export default {
   name: 'MediaHeader',
@@ -80,7 +80,7 @@ export default {
           title: 'Release Date',
           body: this.getFormattedDate(this.media.release_date),
         },
-      ];
+      ]
     },
 
     /**
@@ -88,7 +88,7 @@ export default {
      * @return {Array} of genres
      */
     genres() {
-      return this.media.genres;
+      return this.media.genres
     },
   },
 
@@ -99,7 +99,7 @@ export default {
      * @return {string} image url
      */
     getImageUrl(path) {
-      return ImageUrlSelector(path);
+      return ImageUrlSelector(path)
     },
 
     /**
@@ -110,14 +110,14 @@ export default {
     getFormattedDate(date) {
       // Return null if date is not present
       if (!date) {
-        return null;
+        return null
       }
 
       // Return formatted date
-      return moment(this.media.release_date).format('D MMMM YYYY');
+      return moment(this.media.release_date).format('D MMMM YYYY')
     },
   },
-};
+}
 </script>
 
 <style scoped>

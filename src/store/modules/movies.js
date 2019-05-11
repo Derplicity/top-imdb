@@ -1,13 +1,13 @@
-import axios from 'axios';
+import axios from 'axios'
 
 // Get variables from config
-const { VUE_APP_API_URL, VUE_APP_API_KEY } = process.env;
+const { VUE_APP_API_URL, VUE_APP_API_KEY } = process.env
 
 // Initial State
 const state = {
   movies: [],
   movie: {},
-};
+}
 
 // Getters
 const getters = {
@@ -24,7 +24,7 @@ const getters = {
    * @return {Object} movie
    */
   movie: state => state.movie,
-};
+}
 
 // Actions
 const actions = {
@@ -35,7 +35,7 @@ const actions = {
    */
   clearMovies: ({ commit }) => {
     // Commit mutation
-    commit('clearMovies');
+    commit('clearMovies')
   },
 
   /**
@@ -45,7 +45,7 @@ const actions = {
    */
   clearMovie: ({ commit }) => {
     // Commit mutation
-    commit('clearMovie');
+    commit('clearMovie')
   },
 
   /**
@@ -58,12 +58,12 @@ const actions = {
    */
   getSortedMovies: ({ commit }, { page, append /* , sortType */ }) => {
     // Endpoint
-    const url = `${VUE_APP_API_URL}/discover/movie`;
+    const url = `${VUE_APP_API_URL}/discover/movie`
 
     /**
      * @Feat Include different sorting types
      */
-    const sortBy = 'popularity.desc'; // If sortType is undefined
+    const sortBy = 'popularity.desc' // If sortType is undefined
 
     // Get movies
     axios
@@ -74,18 +74,18 @@ const actions = {
           page,
         },
       })
-      .then((response) => {
-        const { results } = response.data;
+      .then(response => {
+        const { results } = response.data
 
         // Commit mutation based on append param
         if (append) {
           // Add movies to current state
-          commit('addMovies', results);
+          commit('addMovies', results)
         } else {
           // Replace current movies state
-          commit('setMovies', results);
+          commit('setMovies', results)
         }
-      });
+      })
   },
 
   /**
@@ -99,7 +99,7 @@ const actions = {
    */
   getMoviesByQuery: ({ commit }, { query, page, append }) => {
     // Endpoint
-    const url = `${VUE_APP_API_URL}/search/movie`;
+    const url = `${VUE_APP_API_URL}/search/movie`
 
     // Get movies
     axios
@@ -110,18 +110,18 @@ const actions = {
           page,
         },
       })
-      .then((response) => {
-        const { results } = response.data;
+      .then(response => {
+        const { results } = response.data
 
         // Commit mutation based on append param
         if (append) {
           // Add movies to current state
-          commit('addMovies', results);
+          commit('addMovies', results)
         } else {
           // Replace current movies state
-          commit('setMovies', results);
+          commit('setMovies', results)
         }
-      });
+      })
   },
 
   /**
@@ -133,10 +133,10 @@ const actions = {
    */
   getMovieById: ({ commit }, { id }) => {
     // Endpoint
-    const url = `${VUE_APP_API_URL}/movie/${id}`;
+    const url = `${VUE_APP_API_URL}/movie/${id}`
 
     // Additional data to request
-    const appendToResponse = ['credits', 'recommendations'].join(',');
+    const appendToResponse = ['credits', 'recommendations'].join(',')
 
     // Get movie
     axios
@@ -146,14 +146,14 @@ const actions = {
           append_to_response: appendToResponse,
         },
       })
-      .then((response) => {
-        const { data } = response;
+      .then(response => {
+        const { data } = response
 
         // Commit mutation
-        commit('setMovie', data);
-      });
+        commit('setMovie', data)
+      })
   },
-};
+}
 
 // Mutations
 const mutations = {
@@ -189,11 +189,11 @@ const mutations = {
    * @param {Object} movie - The movie to be set
    */
   setMovie: (state, movie) => (state.movie = movie),
-};
+}
 
 export default {
   state,
   getters,
   actions,
   mutations,
-};
+}

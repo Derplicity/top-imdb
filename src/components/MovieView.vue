@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex'
 
 // Components
-import MediaHeader from './MediaHeader';
-import StatsList from './StatsList';
-import FactsList from './FactsList';
-import CastGrid from './CastGrid';
-import MediaGrid from './MediaGrid';
+import MediaHeader from './MediaHeader'
+import StatsList from './StatsList'
+import FactsList from './FactsList'
+import CastGrid from './CastGrid'
+import MediaGrid from './MediaGrid'
 
 export default {
   name: 'MovieView',
@@ -65,10 +65,10 @@ export default {
      */
     castList() {
       // Return empty array if credits not present
-      if (!this.movie.credits) return [];
+      if (!this.movie.credits) return []
 
       // Return movie cast list
-      return this.movie.credits.cast;
+      return this.movie.credits.cast
     },
 
     /**
@@ -77,10 +77,10 @@ export default {
      */
     recommended() {
       // Return empty array if recommendations not present
-      if (!this.movie.recommendations) return [];
+      if (!this.movie.recommendations) return []
 
       // Return recommended movies - max 6
-      return this.movie.recommendations.results.slice(0, 6);
+      return this.movie.recommendations.results.slice(0, 6)
     },
   },
 
@@ -94,7 +94,7 @@ export default {
    */
   created() {
     // Load movie
-    this.loadMovie();
+    this.loadMovie()
   },
 
   /**
@@ -102,7 +102,7 @@ export default {
    */
   beforeDestroy() {
     // Clear movie
-    this.clearMovie();
+    this.clearMovie()
   },
 
   methods: {
@@ -113,14 +113,14 @@ export default {
      * @desc Get movie by id
      */
     loadMovie() {
-      const { id } = this.$route.params;
-      const payload = { id };
+      const { id } = this.$route.params
+      const payload = { id }
 
       // Get movie by id
-      this.getMovieById(payload);
+      this.getMovieById(payload)
     },
   },
-};
+}
 </script>
 
 <style scoped>

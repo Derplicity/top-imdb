@@ -1,14 +1,14 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
 // Components
-import SortedMovies from '../components/SortedMovies';
-import QueriedMovies from '../components/QueriedMovies';
-import MovieView from '../components/MovieView';
-import NotFoundView from '../components/NotFoundView';
+import SortedMovies from '../components/SortedMovies'
+import QueriedMovies from '../components/QueriedMovies'
+import MovieView from '../components/MovieView'
+import NotFoundView from '../components/NotFoundView'
 
 // Load VueRouter
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 // Create Router
 export default new VueRouter({
@@ -32,10 +32,10 @@ export default new VueRouter({
   scrollBehavior(to, from, savedPosition) {
     // Scroll to saved position if using forward/back functionality
     if (savedPosition) {
-      return savedPosition;
+      return savedPosition
     }
 
     // Scroll to top on unique page loads
-    return { x: 0, y: 0 };
+    return { x: 0, y: 0 }
   },
-});
+})

@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex'
 
 // Components
-import ScrollController from './ScrollController';
-import MediaGrid from './MediaGrid';
+import ScrollController from './ScrollController'
+import MediaGrid from './MediaGrid'
 
 export default {
   name: 'MoviesView',
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       page: 1,
-    };
+    }
   },
 
   // Map state to props
@@ -45,7 +45,7 @@ export default {
    */
   created() {
     // Load init movies
-    this.getMovies(false);
+    this.getMovies(false)
   },
 
   /**
@@ -53,7 +53,7 @@ export default {
    */
   beforeDestroy() {
     // Clear movies
-    this.clearMovies();
+    this.clearMovies()
   },
 
   methods: {
@@ -67,16 +67,16 @@ export default {
     getMovies(append) {
       // Reset page number if !append
       if (!append) {
-        this.page = 1;
+        this.page = 1
       }
 
-      const payload = { page: this.page, append };
+      const payload = { page: this.page, append }
 
       // Get movies by user query
-      this.$emit('load-movies', payload);
+      this.$emit('load-movies', payload)
 
       // Increment page
-      this.page += 1;
+      this.page += 1
     },
 
     /**
@@ -84,10 +84,10 @@ export default {
      */
     onScrollBottom() {
       // Load more movies
-      this.getMovies(true);
+      this.getMovies(true)
     },
   },
-};
+}
 </script>
 
 <style scoped>

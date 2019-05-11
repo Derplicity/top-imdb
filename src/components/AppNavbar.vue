@@ -47,7 +47,7 @@
 
 <script>
 // Components
-import NavbarSearch from './NavbarSearch';
+import NavbarSearch from './NavbarSearch'
 
 export default {
   name: 'AppNavbar',
@@ -64,9 +64,9 @@ export default {
   data() {
     return {
       drawer: false,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped>

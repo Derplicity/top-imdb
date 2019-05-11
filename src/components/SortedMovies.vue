@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from 'vuex'
 
 // Components
-import MoviesView from './MoviesView';
+import MoviesView from './MoviesView'
 
 export default {
   name: 'SortedMovies',
@@ -24,8 +24,8 @@ export default {
   watch: {
     // Watch for sortType param change in path
     '$route.params.sortType': function handleParamChange() {
-      const payload = { page: 1, append: false };
-      this.onLoadMovies(payload);
+      const payload = { page: 1, append: false }
+      this.onLoadMovies(payload)
     },
   },
 
@@ -39,13 +39,13 @@ export default {
      */
     onLoadMovies(payload) {
       // Get sortType from route
-      const { sortType } = this.$route.params;
+      const { sortType } = this.$route.params
 
       // Get sorted movies
-      this.getSortedMovies({ ...payload, sortType });
+      this.getSortedMovies({ ...payload, sortType })
     },
   },
-};
+}
 </script>
 
 <style scoped>

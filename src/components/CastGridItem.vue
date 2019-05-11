@@ -17,7 +17,7 @@
 
 <script>
 // Helper methods
-import { ImageUrlSelector } from '../helpers';
+import { ImageUrlSelector } from '../helpers'
 
 export default {
   name: 'CastGridItem',
@@ -36,10 +36,10 @@ export default {
      * @return {string} image url
      */
     getImageUrl(path) {
-      return ImageUrlSelector(path);
+      return ImageUrlSelector(path)
     },
   },
-};
+}
 </script>
 
 <style scoped>

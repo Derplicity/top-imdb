@@ -49,7 +49,7 @@
 
 <script>
 // Helper methods
-import { numFormatter } from '../helpers';
+import { numFormatter } from '../helpers'
 
 export default {
   name: 'StatsList',
@@ -86,10 +86,10 @@ export default {
           iconColor: 'purple accent-3',
           value: numFormatter(this.media.vote_count),
         },
-      ];
+      ]
     },
   },
-};
+}
 </script>
 
 <style scoped>

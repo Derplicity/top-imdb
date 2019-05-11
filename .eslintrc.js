@@ -60,7 +60,10 @@ module.exports = {
         optionalDependencies: ['test/unit/index.js'],
       },
     ],
+    // remove semicolons
+    semi: [2, 'never'],
+    'arrow-parens': [2, 'as-needed', { requireForBlockBody: false }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
-};
+}

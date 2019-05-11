@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       value: '',
-    };
+    }
   },
 
   methods: {
@@ -38,15 +38,15 @@ export default {
      */
     onSubmit(query) {
       // Return null if query is empty
-      if (!query || query.trim().length === 0) return null;
+      if (!query || query.trim().length === 0) return null
 
-      const q = query.trim(); // Trim extra spaces
+      const q = query.trim() // Trim extra spaces
 
       // Alter url path with encoded query
-      return this.$router.push(`/search?q=${encodeURIComponent(q)}`);
+      return this.$router.push(`/search?q=${encodeURIComponent(q)}`)
     },
   },
-};
+}
 </script>
 
 <style scoped>

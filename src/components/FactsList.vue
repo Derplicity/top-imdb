@@ -31,7 +31,7 @@
 
 <script>
 // Helper methods
-import { numFormatter } from '../helpers';
+import { numFormatter } from '../helpers'
 
 export default {
   name: 'FactsList',
@@ -70,7 +70,7 @@ export default {
           icon: 'language',
           value: this.getOriginalLanguage(this.media.original_language),
         },
-      ];
+      ]
     },
   },
 
@@ -81,18 +81,16 @@ export default {
      * @return {null|string} null or original language name
      */
     getOriginalLanguage(iso) {
-      const spokenLanguages = this.media.spoken_languages;
+      const spokenLanguages = this.media.spoken_languages
 
       // Return null if spoken_languages is empty
-      if (!spokenLanguages || spokenLanguages.length === 0) return null;
+      if (!spokenLanguages || spokenLanguages.length === 0) return null
 
       // Find original language reference in spoken_languages
-      const originalLanguage = spokenLanguages.find(
-        language => language.iso_639_1 === iso,
-      );
+      const originalLanguage = spokenLanguages.find(language => language.iso_639_1 === iso)
 
       // Return original language name
-      return originalLanguage.name;
+      return originalLanguage.name
     },
 
     /**
@@ -102,13 +100,13 @@ export default {
      */
     getFormattedDuration(minutes) {
       // Return null if minutes is not present
-      if (!minutes) return null;
+      if (!minutes) return null
 
       // Return formatted duration
-      return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
+      return `${Math.floor(minutes / 60)}h ${minutes % 60}m`
     },
   },
-};
+}
 </script>
 
 <style scoped>
