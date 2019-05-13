@@ -1,7 +1,4 @@
-import axios from 'axios'
-
-// Get variables from config
-const { VUE_APP_API_URL, VUE_APP_API_KEY } = process.env
+import moviesAPI from '../../api/movies'
 
 // Initial State
 const state = {
@@ -56,36 +53,32 @@ const actions = {
    * @param {number} page - Page number to fetch
    * @param {boolean} append - Whether to append to current state
    */
-  getSortedMovies: ({ commit }, { page, append /* , sortType */ }) => {
-    // Endpoint
-    const url = `${VUE_APP_API_URL}/discover/movie`
-
+  getSortedMovies: async ({ commit }, { page, append /* , sortType */ }) => {
     /**
      * @Feat Include different sorting types
      */
     const sortBy = 'popularity.desc' // If sortType is undefined
 
-    // Get movies
-    axios
-      .get(url, {
-        params: {
-          api_key: VUE_APP_API_KEY,
-          sort_by: sortBy,
-          page,
-        },
-      })
-      .then(response => {
-        const { results } = response.data
+    // Init results
+    let results
 
-        // Commit mutation based on append param
-        if (append) {
-          // Add movies to current state
-          commit('addMovies', results)
-        } else {
-          // Replace current movies state
-          commit('setMovies', results)
-        }
-      })
+    // Get sorted movies
+    try {
+      const response = await moviesAPI.getSorted(sortBy, page)
+      results = response.data.results
+    } catch (e) {
+      // Set empty Array if error caught
+      results = []
+    }
+
+    // Commit mutation based on append param
+    if (append) {
+      // Add movies to current state
+      commit('addMovies', results)
+    } else {
+      // Replace current movies state
+      commit('setMovies', results)
+    }
   },
 
   /**
@@ -97,31 +90,27 @@ const actions = {
    * @param {number} page - Page number to fetch
    * @param {boolean} append - Whether to append to current state
    */
-  getMoviesByQuery: ({ commit }, { query, page, append }) => {
-    // Endpoint
-    const url = `${VUE_APP_API_URL}/search/movie`
+  getMoviesByQuery: async ({ commit }, { query, page, append }) => {
+    // Init results
+    let results
 
-    // Get movies
-    axios
-      .get(url, {
-        params: {
-          api_key: VUE_APP_API_KEY,
-          query: encodeURIComponent(query), // Encode string
-          page,
-        },
-      })
-      .then(response => {
-        const { results } = response.data
+    // Get queried movies
+    try {
+      const response = await moviesAPI.getQueried(query, page)
+      results = response.data.results
+    } catch (e) {
+      // Set empty Array if error caught
+      results = []
+    }
 
-        // Commit mutation based on append param
-        if (append) {
-          // Add movies to current state
-          commit('addMovies', results)
-        } else {
-          // Replace current movies state
-          commit('setMovies', results)
-        }
-      })
+    // Commit mutation based on append param
+    if (append) {
+      // Add movies to current state
+      commit('addMovies', results)
+    } else {
+      // Replace current movies state
+      commit('setMovies', results)
+    }
   },
 
   /**
@@ -131,27 +120,21 @@ const actions = {
    * @param {Object} payload - An object of passed params
    * @param {number} id - Unique id of movie
    */
-  getMovieById: ({ commit }, { id }) => {
-    // Endpoint
-    const url = `${VUE_APP_API_URL}/movie/${id}`
+  getMovieById: async ({ commit }, { id }) => {
+    // Init results
+    let result
 
-    // Additional data to request
-    const appendToResponse = ['credits', 'recommendations'].join(',')
+    // Get movie by id
+    try {
+      const response = await moviesAPI.getById(id)
+      result = response.data
+    } catch (e) {
+      // Set empty Object if error caught
+      result = {}
+    }
 
-    // Get movie
-    axios
-      .get(url, {
-        params: {
-          api_key: VUE_APP_API_KEY,
-          append_to_response: appendToResponse,
-        },
-      })
-      .then(response => {
-        const { data } = response
-
-        // Commit mutation
-        commit('setMovie', data)
-      })
+    // Commit mutation
+    commit('setMovie', result)
   },
 }
 
